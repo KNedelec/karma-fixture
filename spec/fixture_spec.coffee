@@ -8,9 +8,9 @@ html_template2 = '<h2 id="tmpl">test</h2><p>multiple</p>'
 html_template3 = '<script>window.test_a_test = true</script>'
 fixture_base = 'spec/fixtures'
 
-load_template_as_karma_html2js = (name, string, base = fixture_base)->
+load_template_as_karma_html2js = (name, string)->
   window.__html__ ?= {}
-  window.__html__["#{base}/#{name}"] = string
+  window.__html__[name] = string
 
 cleanup_karma_html2js_templates = -> window.__html__ = {}
 
@@ -33,23 +33,6 @@ describe 'Fixture', ->
       @instance = null
       delete @instance
 
-    it 'stores the base folder from where to load templates in @.base', ->
-      @instance = new @Fixture()
-      expect(@instance.base)
-        .to.not.be.null
-
-    it "has a default value of '#{fixture_base}' for the base", ->
-      @instance = new @Fixture()
-      expect(@instance.base)
-        .to.equal fixture_base
-
-    it 'receives a param that changes the base value', ->
-      @instance = new @Fixture('checkcheck')
-      expect(@instance.base)
-        .to.equal 'checkcheck'
-
-    it 'receives the base folder from where to load templates as option', ->
-      @instance = new @Fixture()
 
     it 'has an empty array to store json fixtures in @.json', ->
       @instance = new @Fixture()

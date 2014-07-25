@@ -1,8 +1,7 @@
 class Fixture
   @el_id: 'fixture_container'
 
-  constructor: (base = 'spec/fixtures')->
-    @base = base
+  constructor: ()->
     @json = []
 
     @el = window.fixture_container or (->
@@ -21,7 +20,7 @@ class Fixture
     # return created fixtures in an array
     results = []
     for filename in filenames
-      string = __html__?["#{@base}/#{filename}"] or ''
+      string = __html__?[filename] or ''
 
       if filename.indexOf('.json') isnt -1
         try

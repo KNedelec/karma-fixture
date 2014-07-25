@@ -26,8 +26,6 @@ module.exports = function(config){
 
 You also have to register any/all fixtures in your Karma configuration:
 
-(defaults to `spec/fixtures`)
-
 
 ```javascript
 module.exports = function(config){
